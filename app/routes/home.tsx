@@ -1,6 +1,5 @@
 import { Separator } from "@radix-ui/react-separator";
 import { Tabs, TabsContent } from "@radix-ui/react-tabs";
-import { Badge } from "lucide-react";
 
 import RuleCard from "~/components/rule-card";
 import ScoreCard from "~/components/score-card";
@@ -17,16 +16,13 @@ export function meta(_: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center  bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4">
+    <div className="flex items-center justify-center  bg-gradient-to-br from-blue-50 via-white to-blue-50">
       <Card className="w-full max-w-4xl border-0 shadow-xl bg-white/95 backdrop-blur-sm">
         <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-900 text-white rounded-t-lg p-6">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-full h-full bg-pattern-grid"></div>
           </div>
           <div className="text-center space-y-1 relative z-10">
-            <Badge className="absolute top-2 right-2 bg-blue-400 hover:bg-blue-400 text-white">
-              BO3
-            </Badge>
             <CardTitle className="text-2xl sm:text-4xl font-bold tracking-tight">
               CHEBUS ROYALE
             </CardTitle>
@@ -105,20 +101,6 @@ export default function Home() {
           <TabsContent value="calendario" className="mt-0">
             <div className="h-96 flex items-center justify-center">
               <div className="text-center text-blue-800 p-6">
-                <svg
-                  className="w-16 h-16 mx-auto text-blue-500 mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
                 <p className="text-xl font-medium">
                   El calendario del torneo será publicado próximamente
                 </p>
