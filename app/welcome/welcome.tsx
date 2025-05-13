@@ -1,7 +1,7 @@
+import RuleCard from "~/components/rule-card";
+import ScoreCard from "~/components/score-card";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
-import RuleCard from "~/components/ui/rule-card";
-import ScoreCard from "~/components/ui/score-card";
 import { Separator } from "~/components/ui/separator";
 import { Tabs, TabsContent } from "~/components/ui/tabs";
 

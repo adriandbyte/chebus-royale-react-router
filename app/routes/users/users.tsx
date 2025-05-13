@@ -1,4 +1,16 @@
+import {
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { useLoaderData } from "react-router";
+
+import { userColumns } from "~/columns/users.columns";
+import { TableWrapper } from "~/components/table-wrapper";
+import type { User } from "~/types/user.type";
+
+import type { Route } from "./+types/users";
 
 const users = [
   {
@@ -33,14 +45,36 @@ const users = [
   },
 ];
 
+export function meta(_: Route.MetaArgs) {
+  return [
+    { title: "Usuarios Chebus Royale" },
+    { name: "description", content: "Welcome to Usuarios Chebus Royale!" },
+  ];
+}
+
 export function loader() {
   return users;
 }
 
 export function UsersPage() {
   const users = useLoaderData<typeof loader>();
-  console.log(users);
-  return <div>You are in users page</div>;
+
+  const tableInstance = useReactTable<User>({
+    columns: userColumns,
+    data: users,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  return (
+    <div>
+      <TableWrapper
+        tableInstance={tableInstance}
+        emptyMessage="No se encontraron usuarios"
+      />
+    </div>
+  );
 }
 
 export default UsersPage;
