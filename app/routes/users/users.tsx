@@ -52,7 +52,7 @@ export function meta(_: Route.MetaArgs) {
   ];
 }
 
-export function loader() {
+export async function loader() {
   return users;
 }
 
