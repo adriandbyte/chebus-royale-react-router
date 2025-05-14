@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { Toaster } from "sonner";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -25,6 +26,13 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export function meta(_: Route.MetaArgs) {
+  return [
+    { title: "Chebus Royal" },
+    { name: "description", content: "Welcome to Chebus Royal Tournament!" },
+  ];
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -35,6 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Toaster position="top-center" expand={false} richColors closeButton />
         <Header />
         <Navigation />
         {children}

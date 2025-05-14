@@ -10,7 +10,7 @@ import {
 
 const Navigation = () => {
   return (
-    <div className="max-w-screen-xl mx-auto m-2">
+    <div className="max-w-screen-xl mx-auto p-1">
       <NavigationMenu>
         <NavigationMenuList>
           {/* Users Dropdown */}

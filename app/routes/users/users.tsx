@@ -8,7 +8,6 @@ import { useLoaderData } from "react-router";
 
 import { userColumns } from "~/columns/users.columns";
 import { TableWrapper } from "~/components/table-wrapper";
-import type { User } from "~/types/user.type";
 
 import type { Route } from "./+types/users";
 
@@ -47,8 +46,8 @@ const users = [
 
 export function meta(_: Route.MetaArgs) {
   return [
-    { title: "Usuarios Chebus Royale" },
-    { name: "description", content: "Welcome to Usuarios Chebus Royale!" },
+    { title: "Chebus Royale Users" },
+    { name: "description", content: "List of users from Chebus Royale!" },
   ];
 }
 
@@ -59,7 +58,7 @@ export async function loader() {
 export function UsersPage() {
   const users = useLoaderData<typeof loader>();
 
-  const tableInstance = useReactTable<User>({
+  const tableInstance = useReactTable({
     columns: userColumns,
     data: users,
     getCoreRowModel: getCoreRowModel(),

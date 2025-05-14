@@ -5,15 +5,6 @@ import RuleCard from "~/components/rule-card";
 import ScoreCard from "~/components/score-card";
 import { Card, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
 
-import type { Route } from "./+types/home";
-
-export function meta(_: Route.MetaArgs) {
-  return [
-    { title: "Chebus Royal" },
-    { name: "description", content: "Welcome to Chebus Royal Tournament!" },
-  ];
-}
-
 export default function Home() {
   return (
     <div className="flex items-center justify-center  bg-gradient-to-br from-blue-50 via-white to-blue-50">
