@@ -13,15 +13,7 @@ import { Input } from "~/components/ui/input";
 import { withErrorHandling } from "~/lib/supabaseErrorHandler";
 import { userCreateSchema } from "~/schemas/user.schema";
 import { supabase } from "~/supabase-client";
-
-type ActionResponse =
-  | {
-      fieldErrors?: Record<string, string> | null;
-      message?: string;
-      success: boolean;
-      details?: string;
-    }
-  | undefined;
+import type { ActionResponse } from "~/types/action-response.type";
 
 export async function action({
   request,
@@ -74,27 +66,21 @@ export async function action({
     fieldErrors: null,
     message: "Usuario creado con exito!",
   };
-  // Success case
-  // return redirect("/users");
 }
 
 const NewUserPage = () => {
   const actionData = useActionData<ActionResponse>();
   const navigate = useNavigate();
 
-  // Handle toast notifications and navigation
   useEffect(() => {
     if (actionData?.success) {
-      // Show success toast
       toast.success(actionData.message || "Usuario creado con éxito");
 
-      // Set a timeout to redirect after the toast is shown
-      // const redirectTimer = setTimeout(() => {
-      //   navigate("/users");
-      // }, 1500); // Adjust timing as needed (1.5 seconds)
+      const redirectTimer = setTimeout(() => {
+        navigate("/users");
+      }, 1000);
 
-      // Clean up timer if component unmounts
-      // return () => clearTimeout(redirectTimer);
+      return () => clearTimeout(redirectTimer);
     }
   }, [actionData, navigate]);
 
@@ -186,18 +172,20 @@ const NewUserPage = () => {
         </div>
 
         {/* Display database errors */}
-        {actionData?.message && !actionData.fieldErrors && (
-          <div className="mt-4 p-2 bg-red-200 rounded-sm text-center">
-            <span className="text-red-600">
-              {!actionData.success && actionData.message}
-              {/* {actionData.details && (
+        {!actionData?.success &&
+          actionData?.message &&
+          !actionData.fieldErrors && (
+            <div className="mt-4 p-2 bg-red-200 rounded-sm text-center">
+              <span className="text-red-600">
+                {!actionData.success && actionData.message}
+                {/* {actionData.details && (
                 <p className="text-xs mt-1">
                   {JSON.stringify(actionData.details)}
                 </p>
               )} */}
-            </span>
-          </div>
-        )}
+              </span>
+            </div>
+          )}
 
         <Button
           className="cursor-pointer bg-gradient-to-r from-blue-400 to-blue-600 text-white"
